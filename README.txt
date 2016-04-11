@@ -50,11 +50,11 @@ ssh ambari 'bash -s'<install.sh
 
 # 10.2.1.217 master1.cloudwick.com
 
-# 10.2.1.191 master2.cloudwick.com 
+# 10.2.0.193 master2.cloudwick.com 
 
-# 10.2.1.215 data1.cloudwick.com 
+# 10.2.0.182 data1.cloudwick.com 
 
-# 10.2.1.177 data2.cloudwick.com
+# 10.2.0.160 data2.cloudwick.com
 
 
 
@@ -63,13 +63,14 @@ ssh ambari 'bash -s'<install.sh
 
 10.2.1.217	172.16.5.114
 
-10.2.1.191	172.16.5.115
 
-10.2.1.215	172.16.5.116
+10.2.0.193        172.16.0.189
+10.2.0.182        172.16.0.199
+10.2.0.160        172.16.0.219
 
-10.2.1.177	172.16.5.117
 
 
+Examples:
 
 Host ambari
        Hostname ambari.cloudwick.com
