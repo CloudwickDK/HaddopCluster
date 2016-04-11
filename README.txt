@@ -19,13 +19,16 @@ Host ambari
 Host master1
        Hostname 172.16.5.81
        User root
-       IdentityFile ~/.ssh/movielense_idHost master2
+       IdentityFile ~/.ssh/movielense_id
+Host master2
        Hostname 172.16.5.82
        User root
-       IdentityFile ~/.ssh/movielense_idHost data1
+       IdentityFile ~/.ssh/movielense_id
+Host data1
        Hostname 172.16.5.83
        User root
-       IdentityFile ~/.ssh/movielense_idHost data2
+       IdentityFile ~/.ssh/movielense_id
+Host data2
        Hostname 172.16.5.95
        User root
        IdentityFile ~/.ssh/movielense_id
@@ -66,3 +69,38 @@ ssh ambari 'bash -s'<install.sh
 
 10.2.1.177	172.16.5.117
 
+
+
+Host ambari
+       Hostname ambari.cloudwick.com
+       User root
+       IdentityFile ~/.ssh/movielense_id
+	   Port 22
+	   
+	  
+
+Host master1
+       Hostname 172.16.5.81
+       User root
+       IdentityFile ~/.ssh/movielense_id
+Host master2
+       Hostname 172.16.5.82
+       User root
+       IdentityFile ~/.ssh/movielense_id
+Host data1
+       Hostname 172.16.5.83
+       User root
+       IdentityFile ~/.ssh/movielense_id
+Host data2
+       Hostname 172.16.5.95
+       User root
+       IdentityFile ~/.ssh/movielense_id
+	   
+	
+   
+	   
+
+ssh ambrri -> ssh -p <Port> -l <Username> <Hostname> -i <Identityfile>  ->  
+ssh -p 22  -l root ambari .cloudwick.com -i ~/.ssh/movielense_id -> 
+    
+->   ssh -p 22  -l root  10.2.1.213 -i ~/.ssh/movielense_id
