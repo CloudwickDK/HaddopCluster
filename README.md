@@ -1,6 +1,7 @@
 Steps:
 
 Step1:
+
 ssh openstack@despoina.cloudwick.com
 ssh-keygen -t rsa -f .ssh/movielense_id
 ssh-copy-id -i .ssh/movielense_id root@172.16.5.81         (ssh-copy-id -i ~/.ssh_id_rsa.pub username@remote_host)
@@ -14,7 +15,6 @@ Step 2:
 then in order to communicate among the nodes you need to change
 
 vi .ssh/config
-with ………...
 
 Host ambari
        Hostname 172.16.5.80
@@ -47,7 +47,7 @@ this code copies the .sh file to a server
 
 scp /Users/hemanth/Documents/Cloudwick/Installation/Preinstallations.sh despoina@openstack.cloudwick.com:install.sh
 
-#remove end of line by replacing it with space
+remove end of line by replacing it with space
 sed -i -e 's/\r$//' install_prerequisites.sh
 
 Step 4:
@@ -92,7 +92,7 @@ ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
 
 
 ////////////////////////////////////////////
-# This file (/etc/hosts) contains internal IPs and desired hostnames for each node
+ This file (/etc/hosts) contains internal IPs and desired hostnames for each node
 
 # 10.2.1.213 ambari.cloudwick.com
 # 10.2.1.217  master1.cloudwick.com
@@ -137,5 +137,4 @@ select component_name,current_state,service_name from hostcomponentstate;
 Reverse tunelling:
 ProxyCommand ssh -q -W %h:%p openstack    
 
-///////////////////////////////////////////////////////////////////
 
