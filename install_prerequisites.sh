@@ -10,6 +10,8 @@ echo "installed curl"
 yum -y install tar
 echo "installed tar"
 
+#if [[ $res==0 ]]; then echo "installed successfully: ${goal}"; else echo "Failed to install: ${goal}"; exit 1; fi
+
 service iptables stop
 chkconfig iptables off
 service ip6tables stop
@@ -46,6 +48,12 @@ echo "ntpd is running and enabled on boot"
 yum -y upgrade openssl
 
 echo "openSSL updated"
+
+sed -i.old s/SELINUX=enforcing/SELINUX=disabled/ /etc/selinux/config
+echo 0 > /selinux/enforce
+#sestatus
+echo "SELinux disabled"
+
 
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
