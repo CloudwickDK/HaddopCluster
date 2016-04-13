@@ -39,16 +39,18 @@ then you need to install the .sh file this code copies the .sh file
 
 scp /Users/hemanth/Documents/Cloudwick/Installation\ /Preinstallations.sh hemanth@openstack.cloudwick.com:install.sh
 
-and this code will install the .sh
+sed -i -e 's/\r$//' install_prerequisites.sh
 
+and this code will run the .sh
 ssh ambari 'bash -s'<install.sh
 
 
-# This file contains internal IPs and desired hostnames for each node
+# This file (/etc/hosts) contains internal IPs and desired hostnames for each node
 
 # 10.2.1.213 ambari.cloudwick.com
 
 # 10.2.1.217 master1.cloudwick.com
+
 
 # 10.2.0.193 master2.cloudwick.com 
 
@@ -63,10 +65,9 @@ ssh ambari 'bash -s'<install.sh
 
 10.2.1.217	172.16.5.114
 
-
 10.2.0.193        172.16.0.189
 10.2.0.182        172.16.0.199
-10.2.0.160        172.16.0.219
+10.2.0.160        172.16.3.4
 
 
 
@@ -105,3 +106,30 @@ ssh ambrri -> ssh -p <Port> -l <Username> <Hostname> -i <Identityfile>  ->
 ssh -p 22  -l root ambari .cloudwick.com -i ~/.ssh/movielense_id -> 
     
 ->   ssh -p 22  -l root  10.2.1.213 -i ~/.ssh/movielense_id
+
+sys config 
+tail -f ambari agent status
+
+vim /etc/ambari-agent/conf/ambari-agent.ini
+service ambari-agent restart
+tail -250 /var/log/ambari-agent/ambari-agent.log | grep error
+curl -u admin:admin -H 'X-Requested-By: ambari' -X DELETE http://ambari.cloudwick.com:8080/api/v1/clusters/despHadoop/services/AMBARI_METRICS
+yum upgrade openssl
+
+sql
+select component_name,current_state,service_name from hostcomponentstate;
+
+
+Steps:
+
+Step1:
+Install prerequisites on all nodes by running install_prerequisites.sh
+Step 2:
+
+Install 
+ssh-copy-id -i ~/.ssh_id_rsa.pub username@remote_host
+and to get the correct ambara.ini file
+
+
+ ProxyCommand ssh -q -W %h:%p openstack    (reverse tunelling)
+sed -i.old -e 's/hostname=localhost/hostname=ambari.cloudwick.com/' /etc/ambari-agent/conf/ambari-agent.ini
