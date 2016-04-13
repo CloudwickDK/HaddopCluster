@@ -1,53 +1,3 @@
-ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
-
-
-# This file (/etc/hosts) contains internal IPs and desired hostnames for each node
-
-# 10.2.1.213 ambari.cloudwick.com
-# 10.2.1.217  master1.cloudwick.com
-# 10.2.1.79   master2.cloudwick.com
-# 10.2.0.193  data1.cloudwick.com
-# 10.2.0.182  data2.cloudwick.com
-# 10.2.0.160  data3.cloudwick.com
-
-
-Servers:
-
-10.2.1.213	172.16.5.113
-
-10.2.1.217	172.16.5.114
-10.2.1.79	172.16.0.133
-10.2.0.193      172.16.0.189
-10.2.0.182      172.16.0.199
-10.2.0.160      172.16.3.4
-
-
-What does ss ambari do?	   
-
-
-ssh ambari -> ssh -p <Port> -l <Username> <Hostname> -i <Identityfile>  ->  
-ssh -p 22  -l root ambari .cloudwick.com -i ~/.ssh/movielense_id -> 
-    
-->   ssh -p 22  -l root  10.2.1.213 -i ~/.ssh/movielense_id
-
-Delete AMBARI_METRICS for reinstallation because it didn't work:
-
-curl -u admin:admin -H 'X-Requested-By: ambari' -X DELETE http://ambari.cloudwick.com:8080/api/v1/clusters/despHadoop/services/AMBARI_METRICS 
-yum upgrade openssl
-
-View amabri database components:
-
-ssh ambari
-myssql -u root -pdespsql
-use ambari;
-select component_name,current_state,service_name from hostcomponentstate;
-
-
-Reverse tunelling:
-ProxyCommand ssh -q -W %h:%p openstack    
-
-///////////////////////////////////////////////////////////////////
-
 Steps:
 
 Step1:
@@ -134,3 +84,58 @@ check if ambari agents respond on each node with the following commands:
 -vim /etc/ambari-agent/conf/ambari-agent.ini
 -service ambari-agent restart
 -tail -250 /var/log/ambari-agent/ambari-agent.log | grep error
+
+Step 9:
+
+run this and open your browser to: http://localhost:8080
+ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
+
+
+////////////////////////////////////////////
+# This file (/etc/hosts) contains internal IPs and desired hostnames for each node
+
+# 10.2.1.213 ambari.cloudwick.com
+# 10.2.1.217  master1.cloudwick.com
+# 10.2.1.79   master2.cloudwick.com
+# 10.2.0.193  data1.cloudwick.com
+# 10.2.0.182  data2.cloudwick.com
+# 10.2.0.160  data3.cloudwick.com
+
+
+Servers:
+
+10.2.1.213	172.16.5.113
+
+10.2.1.217	172.16.5.114
+10.2.1.79	172.16.0.133
+10.2.0.193      172.16.0.189
+10.2.0.182      172.16.0.199
+10.2.0.160      172.16.3.4
+
+
+What does ss ambari do?	   
+
+
+ssh ambari -> ssh -p <Port> -l <Username> <Hostname> -i <Identityfile>  ->  
+ssh -p 22  -l root ambari .cloudwick.com -i ~/.ssh/movielense_id -> 
+    
+->   ssh -p 22  -l root  10.2.1.213 -i ~/.ssh/movielense_id
+
+Delete AMBARI_METRICS for reinstallation because it didn't work:
+
+curl -u admin:admin -H 'X-Requested-By: ambari' -X DELETE http://ambari.cloudwick.com:8080/api/v1/clusters/despHadoop/services/AMBARI_METRICS 
+yum upgrade openssl
+
+View amabri database components:
+
+ssh ambari
+myssql -u root -pdespsql
+use ambari;
+select component_name,current_state,service_name from hostcomponentstate;
+
+
+Reverse tunelling:
+ProxyCommand ssh -q -W %h:%p openstack    
+
+///////////////////////////////////////////////////////////////////
+
