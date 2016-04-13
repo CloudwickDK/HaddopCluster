@@ -1,6 +1,6 @@
-Steps:
+**Steps**
 
-Step1:
+1. 
 
 ssh openstack@despoina.cloudwick.com
 ssh-keygen -t rsa -f .ssh/movielense_id
@@ -10,7 +10,7 @@ second line copies the key to .5.81 node
 
 you need to repeate the same code to all the nodes.
 
-Step 2:
+2.
 
 then in order to communicate among the nodes you need to change
 
@@ -40,7 +40,7 @@ Host data2
 now you can communicate among the nodes using ssh ambari, master1, master2, data1,data2
 
 
-Step 3:
+ 3.
 
 Install the install_prerequisites.sh file 
 this code copies the .sh file to a server
@@ -50,22 +50,22 @@ scp /Users/hemanth/Documents/Cloudwick/Installation/Preinstallations.sh despoina
 remove end of line by replacing it with space
 sed -i -e 's/\r$//' install_prerequisites.sh
 
-Step 4:
+4.
 
 Install prerequisites on all nodes by running:
 
 ssh ambari 'bash -s'<install.shinstall_prerequisites.sh
 
-Step 5:
+5.
 run versions.sh to all nodes
 
-Step 6:
+6.
 
 install mysql server, 
 create databases: one for oozie, one for hive, one for ambari
 install ambari server on master node  (in our case ambari node)
 
-Step 7:
+7.
 
 In order to make the ambari agents communicate with ambari server: 
 
@@ -77,7 +77,7 @@ hostname <whatever.your.hostname.is> on the machine to set it immediately
 (Alternative way: get the correct ambari.ini file:
 sed -i.old -e 's/hostname=localhost/hostname=ambari.cloudwick.com/' /etc/ambari-agent/conf/ambari-agent.ini )
 
-Step 8:
+8.
 
 check if ambari agents respond on each node with the following commands:
 
@@ -85,32 +85,32 @@ check if ambari agents respond on each node with the following commands:
 -service ambari-agent restart
 -tail -250 /var/log/ambari-agent/ambari-agent.log | grep error
 
-Step 9:
+9.
 
 run this and open your browser to: http://localhost:8080
 ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
 
 
 ////////////////////////////////////////////
+
  This file (/etc/hosts) contains internal IPs and desired hostnames for each node
 
- 10.2.1.213 ambari.cloudwick.com
- 10.2.1.217  master1.cloudwick.com
- 10.2.1.79   master2.cloudwick.com
- 10.2.0.193  data1.cloudwick.com
- 10.2.0.182  data2.cloudwick.com
- 10.2.0.160  data3.cloudwick.com
+ 10.2.1.213 ambari.cloudwick.com  
+ 10.2.1.217  master1.cloudwick.com  
+ 10.2.1.79   master2.cloudwick.com  
+ 10.2.0.193  data1.cloudwick.com  
+ 10.2.0.182  data2.cloudwick.com  
+ 10.2.0.160  data3.cloudwick.com  
 
 
 Servers:
 
-10.2.1.213	172.16.5.113
-
-10.2.1.217	172.16.5.114
-10.2.1.79	172.16.0.133
-10.2.0.193      172.16.0.189
-10.2.0.182      172.16.0.199
-10.2.0.160      172.16.3.4
+10.2.1.213	172.16.5.113  
+10.2.1.217	172.16.5.114  
+10.2.1.79	172.16.0.133  
+10.2.0.193    172.16.0.189  
+10.2.0.182    172.16.0.199  
+10.2.0.160    172.16.3.4  
 
 
 What does ss ambari do?	   
