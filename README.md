@@ -94,12 +94,12 @@ ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
 ////////////////////////////////////////////
  This file (/etc/hosts) contains internal IPs and desired hostnames for each node
 
-# 10.2.1.213 ambari.cloudwick.com
-# 10.2.1.217  master1.cloudwick.com
-# 10.2.1.79   master2.cloudwick.com
-# 10.2.0.193  data1.cloudwick.com
-# 10.2.0.182  data2.cloudwick.com
-# 10.2.0.160  data3.cloudwick.com
+ 10.2.1.213 ambari.cloudwick.com
+ 10.2.1.217  master1.cloudwick.com
+ 10.2.1.79   master2.cloudwick.com
+ 10.2.0.193  data1.cloudwick.com
+ 10.2.0.182  data2.cloudwick.com
+ 10.2.0.160  data3.cloudwick.com
 
 
 Servers:
