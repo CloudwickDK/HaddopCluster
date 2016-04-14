@@ -90,6 +90,10 @@ Step 9:
 run this and open your browser to: http://localhost:8080
 ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
 
+Step 10:
+
+hdfs->actions-> high availability
+
 
 ////////////////////////////////////////////
 # This file (/etc/hosts) contains internal IPs and desired hostnames for each node
