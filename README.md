@@ -92,6 +92,8 @@ ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
 
 Step 10:
 
+choose cluster settings
+then for high availability:
 hdfs->actions-> high availability
 
 
