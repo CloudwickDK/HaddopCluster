@@ -119,7 +119,7 @@ Servers:
 10.2.0.160    172.16.3.4  
 
 
-What does ss ambari do?	   
+What does ssh ambari do?	   
 
 
 ssh ambari -> ssh -p <Port> -l <Username> <Hostname> -i <Identityfile>  ->  
@@ -143,4 +143,5 @@ select component_name,current_state,service_name from hostcomponentstate;
 Reverse tunelling:
 ProxyCommand ssh -q -W %h:%p openstack    
 
+50070 port
 
