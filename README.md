@@ -93,6 +93,7 @@ ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
 Step 10:
 
 choose cluster settings
+
 then for high availability:
 hdfs->actions-> high availability
 
@@ -140,7 +141,8 @@ use ambari;
 select component_name,current_state,service_name from hostcomponentstate;
 
 
-Reverse tunelling:
+Reverse tunelling: You can jump host using ProxyCommand.
+If we add the following line on ~/.ssh/config for each remote host we want to connect to through the intermediate node (openstack).
 ProxyCommand ssh -q -W %h:%p openstack    
 
 50070 port
