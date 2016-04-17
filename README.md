@@ -122,7 +122,6 @@ Servers:
 
 What does ssh ambari do?	   
 
-
 ssh ambari -> ssh -p <Port> -l <Username> <Hostname> -i <Identityfile>  ->  
 ssh -p 22  -l root ambari .cloudwick.com -i ~/.ssh/movielense_id -> 
     
@@ -141,7 +140,9 @@ use ambari;
 select component_name,current_state,service_name from hostcomponentstate;
 
 
-Reverse tunelling: You can jump host using ProxyCommand.
+Reverse tunelling: 
+
+You can jump host using ProxyCommand.
 If we add the following line on ~/.ssh/config for each remote host we want to connect to through the intermediate node (openstack).
 ProxyCommand ssh -q -W %h:%p openstack    
 
