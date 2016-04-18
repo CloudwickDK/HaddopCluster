@@ -142,8 +142,8 @@ select component_name,current_state,service_name from hostcomponentstate;
 
 Reverse tunelling: 
 
-You can jump host using ProxyCommand.
-If we add the following line on ~/.ssh/config for each remote host we want to connect to through the intermediate node (openstack).
+You can jump host using ProxyCommand,
+by adding the following line on ~/.ssh/config for each remote host we want to connect to through the intermediate node (openstack).
 ProxyCommand ssh -q -W %h:%p openstack    
 
 50070 port
