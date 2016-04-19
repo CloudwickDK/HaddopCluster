@@ -1,4 +1,5 @@
-**Steps**
+
+**Steps for seeting up a cluster (Hortonworks).**
 
 1. 
 
@@ -40,7 +41,7 @@ Host data2
 now you can communicate among the nodes using ssh ambari, master1, master2, data1,data2
 
 
- 3.
+3.
 
 Install the install_prerequisites.sh file 
 this code copies the .sh file to a server
@@ -57,6 +58,7 @@ Install prerequisites on all nodes by running:
 ssh ambari 'bash -s'<install.shinstall_prerequisites.sh
 
 5.
+
 run versions.sh to all nodes
 
 6.
@@ -90,7 +92,7 @@ check if ambari agents respond on each node with the following commands:
 run this and open your browser to: http://localhost:8080
 ssh -L 8080:172.16.5.116:8080 despoina@openstack.cloudwick.com
 
-Step 10:
+10.
 
 choose cluster settings
 
@@ -115,9 +117,9 @@ Servers:
 10.2.1.213	172.16.5.113  
 10.2.1.217	172.16.5.114  
 10.2.1.79	172.16.0.133  
-10.2.0.193    172.16.0.189  
-10.2.0.182    172.16.0.199  
-10.2.0.160    172.16.3.4  
+10.2.0.193   172.16.0.189  
+10.2.0.182   172.16.0.199  
+10.2.0.160   172.16.3.4  
 
 
 What does ssh ambari do?	   
